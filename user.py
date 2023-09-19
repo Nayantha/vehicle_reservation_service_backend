@@ -14,3 +14,6 @@ class User(Model):
         :param username: Username of the user        :return:
         """
         return cls.get(username=username)
+
+    def verify_password(self, password: str):
+        return self.password_hash == password
