@@ -21,7 +21,7 @@ async def say_hello(name: str):
 if __name__ == '__main__':
     register_tortoise(
         app,
-        db_url="",
+        db_url="mysql://localhost:3306",
         modules={"models": ["user"]},
         generate_schemas=True,
         add_exception_handlers=True,
