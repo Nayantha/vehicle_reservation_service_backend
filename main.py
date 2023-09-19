@@ -24,9 +24,11 @@ if __name__ == '__main__':
     DB_USER = os.getenv("DB_USER")
     DB_PASSWORD = os.getenv("DB_PASSWORD")
     DB_NAME = os.getenv("DB_NAME")
+    DB_HOST = os.getenv("DB_HOST")
+    DB_PORT = os.getenv("DB_PORT")
     register_tortoise(
         app,
-        db_url="mysql://localhost:3306",
+        db_url=f"mysql://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}",
         modules={"models": ["user"]},
         generate_schemas=True,
         add_exception_handlers=True,
