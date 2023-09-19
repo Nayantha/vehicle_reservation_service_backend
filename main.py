@@ -1,3 +1,5 @@
+import os
+
 from fastapi import FastAPI, Depends
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from tortoise.contrib.fastapi import register_tortoise
@@ -19,6 +21,9 @@ async def say_hello(name: str):
     return {"message": f"Hello {name}"}
 
 if __name__ == '__main__':
+    DB_USER = os.getenv("DB_USER")
+    DB_PASSWORD = os.getenv("DB_PASSWORD")
+    DB_NAME = os.getenv("DB_NAME")
     register_tortoise(
         app,
         db_url="mysql://localhost:3306",
